@@ -4,11 +4,6 @@ export type MainProps = {
   children: React.ReactNode
 }
 
-const Main = ({ children }: MainProps) => (
-  <Wrapper>
-    <Title>React Avançado</Title>
-    {children}
-  </Wrapper>
-)
+const Main = ({ children }: MainProps) => <Wrapper>{children}</Wrapper>
 
 export default Main
