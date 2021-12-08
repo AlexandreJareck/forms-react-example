@@ -1,29 +1,34 @@
 import { ReactNode } from 'react'
 import { Container } from './styles'
 
+export type LineColors = 'primary' | 'secondary'
+
 export type HeadingProps = {
   children: ReactNode
   color?: 'white' | 'black'
   lineLeft?: boolean
   lineBottom?: boolean
+  lineColor?: LineColors
   size?: 'small' | 'medium'
 }
 
-const Heanding = ({
+const Heading = ({
   children,
   color = 'white',
   lineLeft = false,
   lineBottom = false,
-  size = 'small'
+  lineColor = 'primary',
+  size = 'medium'
 }: HeadingProps) => (
   <Container
     color={color}
     lineLeft={lineLeft}
     lineBottom={lineBottom}
+    lineColor={lineColor}
     size={size}
   >
     {children}
   </Container>
 )
 
-export default Heanding
+export default Heading

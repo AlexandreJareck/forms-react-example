@@ -10,3 +10,5 @@ const Main = ({ children }: MainProps) => (
     {children}
   </Wrapper>
 )
+
+export default Main
