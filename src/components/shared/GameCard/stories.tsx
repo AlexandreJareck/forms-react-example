@@ -12,7 +12,7 @@ export default {
     promotionalPrice: 'R$ 200,00',
     parameters: {
       backgrounds: {
-        default: 'dark'
+        default: 'won-dark'
       }
     }
   },
