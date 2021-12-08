@@ -3,6 +3,9 @@ import media from 'styled-media-query'
 import { HeadingProps } from '.'
 
 const wrapperModifiers = {
+  small: (theme: DefaultTheme) => css``,
+  medium: (theme: DefaultTheme) => css``,
+
   lineLeft: (theme: DefaultTheme) => css`
     padding-left: ${theme.spacings.xxsmall};
     border-left: 0.7rem solid ${theme.colors.secondary};

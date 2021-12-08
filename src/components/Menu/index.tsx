@@ -1,8 +1,11 @@
-import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
-import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outlined/ShoppingCart'
-import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
-
+import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
+import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outlined/ShoppingCart'
+import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
+import Button from 'components/shared/Button'
+import Logo from 'components/shared/Logo'
+import MediaMatch from 'components/shared/MediaMatch'
+import { useState } from 'react'
 import {
   Container,
   CreateAccount,
@@ -14,10 +17,6 @@ import {
   MenuNav,
   RegisterBox
 } from './styles'
-import Logo from 'components/Logo'
-import { useState } from 'react'
-import Button from 'components/Button'
-import MediaMatch from 'components/MediaMatch'
 
 export type MenuProps = {
   username?: string
