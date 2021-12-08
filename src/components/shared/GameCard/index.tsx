@@ -1,8 +1,74 @@
-import { Container } from './styles'
+import {
+  AddShoppingCart,
+  FavoriteBorder,
+  Favorite
+} from '@styled-icons/material-outlined'
+import Button from '../Button'
+import Ribbon, { RibbonColors, RibbonSizes } from '../Ribbon'
+import {
+  BuyBox,
+  Container,
+  Content,
+  Developer,
+  FavButton,
+  ImageBox,
+  Info,
+  Price,
+  Title
+} from './styles'
 
-const GameCard = () => (
+export type GameCardProps = {
+  title: string
+  developer: string
+  img: string
+  price: string
+  promotionalPrice?: string
+  favorite?: boolean
+  onFav?: () => void
+  ribbon?: React.ReactNode
+  ribbonColor?: RibbonColors
+  ribbonSize?: RibbonSizes
+}
+
+const GameCard = ({
+  title,
+  developer,
+  img,
+  price,
+  promotionalPrice,
+  favorite = false,
+  onFav,
+  ribbon,
+  ribbonColor = 'primary',
+  ribbonSize = 'small'
+}: GameCardProps) => (
   <Container>
-    <h1>GameCard</h1>
+    <ImageBox>
+      <img src={img} alt={title} />
+    </ImageBox>
+    {!!ribbon && (
+      <Ribbon color={ribbonColor} size={ribbonSize}>
+        {ribbon}
+      </Ribbon>
+    )}
+    <Content>
+      <Info>
+        <Title>{title}</Title>
+        <Developer>{developer}</Developer>
+      </Info>
+      <FavButton onClick={onFav} role="button">
+        {favorite ? (
+          <Favorite aria-label="Remove from Wishlist" />
+        ) : (
+          <FavoriteBorder aria-label="Add to Wishlist" />
+        )}
+      </FavButton>
+      <BuyBox>
+        {!!promotionalPrice && <Price isPromotional>{price}</Price>}
+        <Price>{promotionalPrice || price}</Price>
+        <Button icon={<AddShoppingCart />} size="small" />
+      </BuyBox>
+    </Content>
   </Container>
 )
 
