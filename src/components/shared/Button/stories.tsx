@@ -9,6 +9,22 @@ export default {
     children: {
       type: 'string'
     },
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'medium', 'large']
+      }
+    },
+    minimal: {
+      control: {
+        type: 'boolean'
+      }
+    },
+    fullWidth: {
+      control: {
+        type: 'boolean'
+      }
+    },
     icon: {
       type: ''
     }
@@ -29,7 +45,7 @@ withIcon.args = {
   icon: <AddShoppingCart />
 }
 
-export const asLink: Story = (args) => <Button {...args} />
+export const asLink: Story<ButtonProps> = (args) => <Button {...args} />
 
 asLink.args = {
   size: 'large',

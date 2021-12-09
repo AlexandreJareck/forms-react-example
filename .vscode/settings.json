@@ -11,5 +11,9 @@
   "editor.fontFamily": "Fira Code",
   "editor.fontWeight": "300",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'"
+  "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
+  "emmet.includeLanguages":{
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  }
 }
