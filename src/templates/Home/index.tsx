@@ -66,22 +66,26 @@ const Home = ({
       </SectionMostPopular>
     </Container>
 
-    <SectionUpcoming>
-      <Heading lineLeft lineColor="secondary">
-        Upcomming
-      </Heading>
-      <GameCardSlider items={upcommingGames} />
-      <Highlight {...upcommingHighligth} />
-      <GameCardSlider items={upcommingMoreGames} />
-    </SectionUpcoming>
+    <Container>
+      <SectionUpcoming>
+        <Heading lineLeft lineColor="secondary">
+          Upcomming
+        </Heading>
+        <GameCardSlider items={upcommingGames} />
+        <Highlight {...upcommingHighligth} />
+        <GameCardSlider items={upcommingMoreGames} />
+      </SectionUpcoming>
+    </Container>
 
-    <SectionFreeGames>
-      <Heading lineLeft lineColor="secondary">
-        Free Games
-      </Heading>
-      <Highlight {...freeHighligth} />
-      <GameCardSlider items={freeGames} />
-    </SectionFreeGames>
+    <Container>
+      <SectionFreeGames>
+        <Heading lineLeft lineColor="secondary">
+          Free Games
+        </Heading>
+        <Highlight {...freeHighligth} />
+        <GameCardSlider items={freeGames} />
+      </SectionFreeGames>
+    </Container>
 
     <SectionFooter>
       <Container>
