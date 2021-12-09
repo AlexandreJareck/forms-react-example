@@ -1,6 +1,7 @@
 import Heading from 'components/shared/Heading'
 import MediaMatch from 'components/shared/MediaMatch'
-import { Block, Container, Content, Description, Label } from './styles'
+import GameDetailsBlock from '../GameDetailsBlock'
+import { Container, Content } from './styles'
 
 const GameDetails = () => (
   <Container>
@@ -11,33 +12,12 @@ const GameDetails = () => (
     </MediaMatch>
 
     <Content>
-      <Block>
-        <Label>Developer</Label>
-        <Description>Gearbox Software</Description>
-      </Block>
-      <Block>
-        <Label>Release Date</Label>
-        <Description>Nov 16, 2019</Description>
-      </Block>
-
-      <Block>
-        <Label>Platforms</Label>
-      </Block>
-
-      <Block>
-        <Label>Publisher</Label>
-        <Description>2K</Description>
-      </Block>
-
-      <Block>
-        <Label>Rating</Label>
-        <Description>18+</Description>
-      </Block>
-
-      <Block>
-        <Label>Genres</Label>
-        <Description>Action / Adventure</Description>
-      </Block>
+      <GameDetailsBlock title="Developer" description="Gearbox Software" />
+      <GameDetailsBlock title="Release Date" description="Nov 16, 2019" />
+      <GameDetailsBlock title="Platforms" />
+      <GameDetailsBlock title="Publisher" description="2K" />
+      <GameDetailsBlock title="Rating" description="18+" />
+      <GameDetailsBlock title="Genres" description="Action / Adventure" />
     </Content>
   </Container>
 )

@@ -6,7 +6,6 @@ export const Container = styled.div`
     margin: ${theme.spacings.small} 0;
   `}
 `
-
 export const Content = styled.div`
   ${({ theme }) => css`
     display: grid;
@@ -21,21 +20,4 @@ export const Content = styled.div`
     `}
   `}
 `
-
 export const Block = styled.div``
-
-export const Label = styled.h3`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.small};
-    font-weight: ${theme.font.light};
-    color: ${theme.colors.white};
-  `}
-`
-
-export const Description = styled.p`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.medium};
-    font-weight: ${theme.font.bold};
-    color: ${theme.colors.white};
-  `}
-`
