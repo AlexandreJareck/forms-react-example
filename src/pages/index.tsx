@@ -19,6 +19,7 @@ export function getServerSideProps() {
   // fazer calculo|leitura de context
 
   // retorno dos dados
+
   return {
     props: {
       banners: bannersMock,
