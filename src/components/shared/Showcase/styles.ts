@@ -1,12 +1,12 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-import { Container } from 'components/shared/Container'
+import { Container as ContainerBase } from 'components/shared/Container'
 import * as HeadingStyles from 'components/shared/Heading/styles'
 import * as GameCardSliderStyles from 'components/shared/GameCardSlider/styles'
 import * as HighlightStyles from 'components/shared/Highlight/styles'
 
-export const Wrapper = styled(Container).attrs({ as: 'section' })`
+export const Container = styled(ContainerBase).attrs({ as: 'section' })`
   ${({ theme }) => css`
     ${HeadingStyles.Container},
     ${HighlightStyles.Container},

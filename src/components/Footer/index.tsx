@@ -13,6 +13,7 @@ const Footer = () => (
         </Heading>
         <a href="mailto:sac@wongames.com">sac@wongames.com</a>
       </Column>
+
       <Column>
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Follow us
@@ -48,6 +49,7 @@ const Footer = () => (
           </a>
         </nav>
       </Column>
+
       <Column>
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Links
@@ -65,6 +67,7 @@ const Footer = () => (
           </Link>
         </nav>
       </Column>
+
       <Column aria-labelledby="footer-contact">
         <Heading color="black" lineColor="secondary" lineBottom size="small">
           Location
