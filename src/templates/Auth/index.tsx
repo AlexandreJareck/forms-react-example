@@ -1,5 +1,6 @@
 import Heading from 'components/shared/Heading'
 import Logo from 'components/shared/Logo'
+import Link from 'next/link'
 import {
   BannerBlock,
   BannerContent,
@@ -19,7 +20,11 @@ const Auth = ({ title, children }: AuthProps) => (
   <Container>
     <BannerBlock>
       <BannerContent>
-        <Logo id="banner" />
+        <Link href="/">
+          <a>
+            <Logo id="banner" />
+          </a>
+        </Link>
 
         <div>
           <Heading size="huge">All your favorite games in one place</Heading>
@@ -34,7 +39,11 @@ const Auth = ({ title, children }: AuthProps) => (
 
     <Content>
       <ContentWrapper>
-        <Logo id="content" color="black" size="large" />
+        <Link href="/">
+          <a>
+            <Logo id="content" color="black" size="large" />
+          </a>
+        </Link>
         <Heading color="black" lineColor="secondary" lineLeft>
           {title}
         </Heading>
