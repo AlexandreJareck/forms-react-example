@@ -1,12 +1,11 @@
-import { ForgotPassword, FormLink } from 'components/FormSignIn/styles'
 import Button from 'components/shared/Button'
+import { ForgotPassword, FormContainer, FormLink } from 'components/shared/Form'
 import TextField from 'components/shared/TextField'
 import Link from 'next/link'
 import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined'
-import { Container } from './styles'
 
 const FormSignUp = () => (
-  <Container>
+  <FormContainer>
     <form>
       <TextField
         name="name"
@@ -45,7 +44,7 @@ const FormSignUp = () => (
         </Link>
       </FormLink>
     </form>
-  </Container>
+  </FormContainer>
 )
 
 export default FormSignUp

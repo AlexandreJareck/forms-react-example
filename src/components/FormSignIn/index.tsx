@@ -1,11 +1,11 @@
 import Button from 'components/shared/Button'
+import { ForgotPassword, FormContainer, FormLink } from 'components/shared/Form'
 import TextField from 'components/shared/TextField'
 import Link from 'next/link'
 import { Email, Lock } from 'styled-icons/material-outlined'
-import { Container, ForgotPassword, FormLink } from './styles'
 
 const FormSignIn = () => (
-  <Container>
+  <FormContainer>
     <form>
       <TextField
         name="email"
@@ -32,7 +32,7 @@ const FormSignIn = () => (
         </Link>
       </FormLink>
     </form>
-  </Container>
+  </FormContainer>
 )
 
 export default FormSignIn
