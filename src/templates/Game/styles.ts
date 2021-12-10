@@ -46,3 +46,13 @@ export const SectionGallery = styled(Section)`
 `
 
 export const SectionGameInfo = styled(Section)``
+
+export const SectionDescription = styled(Section)`
+  ${({ theme }) => css`
+    .description__copyrights {
+      color: ${theme.colors.gray};
+      font-size: ${theme.font.sizes.xsmall};
+      margin-top: ${theme.spacings.medium};
+    }
+  `}
+`
