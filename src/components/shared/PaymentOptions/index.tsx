@@ -11,6 +11,7 @@ import {
   Container,
   Footer
 } from './styles'
+import { useState } from 'react'
 
 export type PaymentOptionsProps = {
   cards?: PaymentCard[]
@@ -23,43 +24,52 @@ export type PaymentCard = {
   img: string
 }
 
-const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => (
-  <Container>
-    <Body>
-      <Heading color="black" size="small" lineBottom>
-        Payment
-      </Heading>
+const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
+  const [checked, setChecked] = useState(false)
 
-      <CardsList>
-        {cards?.map((card) => (
-          <CardItem key={card.number}>
-            <CardInfo>
-              <img src={card.img} alt={card.flag} />
-              {card.number}
-            </CardInfo>
-            <Radio
-              name="credit-card"
-              id={card.number}
-              value={card.number}
-              onCheck={() => ({})}
-            />
-          </CardItem>
-        ))}
+  return (
+    <Container>
+      <Body>
+        <Heading color="black" size="small" lineBottom>
+          Payment
+        </Heading>
 
-        <AddCard role="button">
-          <Add size={14} /> Add a new credit card
-        </AddCard>
-      </CardsList>
-    </Body>
-    <Footer>
-      <Button as="a" fullWidth minimal>
-        Continue shopping
-      </Button>
-      <Button fullWidth icon={<ShoppingCart />} onClick={handlePayment}>
-        Buy now
-      </Button>
-    </Footer>
-  </Container>
-)
+        <CardsList>
+          {cards?.map((card) => (
+            <CardItem key={card.number}>
+              <CardInfo>
+                <img src={card.img} alt={card.flag} />
+                {card.number}
+              </CardInfo>
+              <Radio
+                name="credit-card"
+                id={card.number}
+                value={card.number}
+                onCheck={() => setChecked(true)}
+              />
+            </CardItem>
+          ))}
+
+          <AddCard role="button">
+            <Add size={14} /> Add a new credit card
+          </AddCard>
+        </CardsList>
+      </Body>
+      <Footer>
+        <Button as="a" fullWidth minimal>
+          Continue shopping
+        </Button>
+        <Button
+          fullWidth
+          icon={<ShoppingCart />}
+          onClick={handlePayment}
+          disabled={!checked}
+        >
+          Buy now
+        </Button>
+      </Footer>
+    </Container>
+  )
+}
 
 export default PaymentOptions

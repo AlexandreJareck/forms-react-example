@@ -11,19 +11,16 @@ const wrapperModifiers = {
     height: 3rem;
     font-size: ${theme.font.sizes.xsmall};
   `,
-
   medium: (theme: DefaultTheme) => css`
     height: 4rem;
     font-size: ${theme.font.sizes.small};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.medium};
   `,
-
   large: (theme: DefaultTheme) => css`
     height: 5rem;
     font-size: ${theme.font.sizes.medium};
     padding: ${theme.spacings.xxsmall} ${theme.spacings.xlarge};
   `,
-
   fullWidth: () => css`
     width: 100%;
   `,
@@ -44,11 +41,17 @@ const wrapperModifiers = {
     &:hover {
       color: ${darken(0.1, theme.colors.primary)};
     }
+  `,
+  disabled: () => css`
+    &:disabled {
+      cursor: not-allowed;
+      filter: saturate(30%);
+    }
   `
 }
 
 export const Container = styled.button<ContainerProps>`
-  ${({ theme, size, fullWidth, hasIcon, minimal }) => css`
+  ${({ theme, size, fullWidth, hasIcon, minimal, disabled }) => css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -69,5 +72,6 @@ export const Container = styled.button<ContainerProps>`
     ${!!fullWidth && wrapperModifiers.fullWidth()};
     ${!!hasIcon && wrapperModifiers.withIcon(theme)};
     ${!!minimal && wrapperModifiers.minimal(theme)};
+    ${disabled && wrapperModifiers.disabled()};
   `}
 `
