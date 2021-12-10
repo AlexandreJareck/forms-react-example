@@ -1,4 +1,4 @@
-import GameItem, { GameItemProps } from 'components/GameItem'
+import GameItem, { GameItemProps } from 'components/shared/GameItem'
 import { Container, Footer, Total } from './styles'
 
 export type CartListProps = {
