@@ -14,6 +14,7 @@ import {
   SectionGameInfo
 } from './styles'
 import Showcase from 'components/shared/Showcase'
+import { Divider } from 'components/shared/Divider'
 
 export type GameTemplateProps = {
   cover: string
@@ -54,6 +55,7 @@ const Game = ({
 
       <SectionGameDetails>
         <GameDetails {...details} />
+        <Divider />
       </SectionGameDetails>
 
       <Showcase
