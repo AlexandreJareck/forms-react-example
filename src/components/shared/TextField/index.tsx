@@ -4,7 +4,6 @@ import { Container, Icon, Input, InputWrapper, Label, Error } from './styles'
 export type TextFieldProps = {
   onInput?: (value: string) => void
   label?: string
-  labelFor?: string
   initialValue?: string
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
@@ -14,11 +13,11 @@ export type TextFieldProps = {
 
 const TextField = ({
   label,
-  labelFor = '',
   error,
   initialValue = '',
   onInput,
   icon,
+  name,
   iconPosition = 'left',
   disabled = false,
   ...props
@@ -34,7 +33,7 @@ const TextField = ({
 
   return (
     <Container disabled={disabled} error={!!error}>
-      {!!label && <Label htmlFor={labelFor}>{label}</Label>}
+      {!!label && <Label htmlFor={name}>{label}</Label>}
       <InputWrapper>
         {!!icon && <Icon iconPosition={iconPosition}>{icon}</Icon>}
         <Input
@@ -43,6 +42,8 @@ const TextField = ({
           value={value}
           iconPosition={iconPosition}
           disabled={disabled}
+          name={name}
+          {...(label ? { id: name } : {})}
           {...props}
         />
       </InputWrapper>
