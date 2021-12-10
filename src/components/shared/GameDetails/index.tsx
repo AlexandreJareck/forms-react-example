@@ -1,6 +1,6 @@
 import Heading from 'components/shared/Heading'
 import MediaMatch from 'components/shared/MediaMatch'
-import GameDetailsBlock from '../GameDetailsBlock'
+import GameDetailsBlock, { Platform } from '../GameDetailsBlock'
 import { Container, Content } from './styles'
 
 type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'
@@ -8,11 +8,19 @@ type Rating = 'BR0' | 'BR10' | 'BR12' | 'BR14' | 'BR16' | 'BR18'
 export type GameDetailsProps = {
   rating: Rating
   genres: string[]
+  publisher: string
+  releaseDate: string
+  developer: string
+  platforms?: Platform[]
 }
 
 const GameDetails = ({
-  rating = 'BR0',
-  genres = ['Role-playing']
+  rating,
+  genres,
+  publisher,
+  releaseDate,
+  developer,
+  platforms
 }: GameDetailsProps) => {
   return (
     <Container>
@@ -23,17 +31,17 @@ const GameDetails = ({
       </MediaMatch>
 
       <Content>
-        <GameDetailsBlock title="Developer" description="Gearbox Software" />
+        <GameDetailsBlock title="Developer" description={developer} />
         <GameDetailsBlock
           title="Release Date"
           description={new Intl.DateTimeFormat('en-US', {
             day: 'numeric',
             month: 'short',
             year: 'numeric'
-          }).format(new Date('2020-11-21T23:00:00'))}
+          }).format(new Date(releaseDate))}
         />
-        <GameDetailsBlock title="Platforms" withIcon />
-        <GameDetailsBlock title="Publisher" description="2K" />
+        <GameDetailsBlock title="Platforms" withIcon platforms={platforms} />
+        <GameDetailsBlock title="Publisher" description={publisher} />
         <GameDetailsBlock
           title="Rating"
           description={
