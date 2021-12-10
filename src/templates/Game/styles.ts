@@ -38,5 +38,11 @@ const Section = styled(Container).attrs({ as: 'section' })`
     `}
   `}
 `
+export const SectionGallery = styled(Section)`
+  display: none;
+  ${media.greaterThan('medium')`
+    display: block;
+  `}
+`
 
 export const SectionGameInfo = styled(Section)``
