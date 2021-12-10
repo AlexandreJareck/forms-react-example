@@ -6,9 +6,7 @@ export default function Index(props: GameTemplateProps) {
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { slug: 'cyberpunk-2077' } }
-    ],
+    paths: [{ params: { slug: 'cyberpunk-2077' } }],
     fallback: false
   }
 }

@@ -18,6 +18,7 @@ function App({ Component, pageProps }: AppProps) {
           content="A simple project starter to work with ts, reactm nextjs and style components"
         />
       </Head>
+
       <GlobalStyles />
       <Component {...pageProps} />
     </ThemeProvider>
