@@ -8,7 +8,8 @@
     "lint": "eslint src",
     "test": "jest",
     "test:watch": "yarn test --watch",
-    "generate": "yarn plop --plopfile generators/plopfile.js",
+    "gcomponent": "yarn plop --plopfile generators/plopfile.js",
+    "gtemplate": "yarn plop --plopfile generators/plopfileTemplate.js",
     "sb": "start-storybook -s ./public -p 6006",
     "build-storybook": "build-storybook"
   },
