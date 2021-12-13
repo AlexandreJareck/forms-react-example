@@ -20,12 +20,9 @@ const Checkbox = ({
   ...props
 }: CheckboxProps) => {
   const [checked, setChecked] = useState(isChecked)
-
   const onChange = () => {
-    const status = !checked
-    setChecked(status)
-
-    !!onCheck && onCheck(status)
+    setChecked(!checked)
+    !!onCheck && onCheck(!checked)
   }
 
   return (

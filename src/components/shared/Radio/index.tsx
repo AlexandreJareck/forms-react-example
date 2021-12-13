@@ -4,7 +4,6 @@ import { Container, Input, Label } from './styles'
 type RadioValue = string | ReadonlyArray<string> | number
 
 export type RadioProps = {
-  onCheck?: (value?: RadioValue) => void
   label?: string
   labelColor?: 'white' | 'black'
   labelFor?: string
@@ -12,26 +11,15 @@ export type RadioProps = {
 } & InputHTMLAttributes<HTMLInputElement>
 
 const Radio = ({
-  onCheck,
   label,
-  labelColor,
+  labelColor = 'white',
   labelFor,
   value,
   ...props
 }: RadioProps) => {
-  const onChange = () => {
-    !!onCheck && onCheck(value)
-  }
-
   return (
     <Container>
-      <Input
-        id={labelFor}
-        type="radio"
-        value={value}
-        onChange={onChange}
-        {...props}
-      />
+      <Input id={labelFor} type="radio" value={value} {...props} />
       {!!label && (
         <Label labelColor={labelColor} htmlFor={labelFor}>
           {label}
