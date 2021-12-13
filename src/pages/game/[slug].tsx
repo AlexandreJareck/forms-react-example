@@ -2,6 +2,7 @@ import Game, { GameTemplateProps } from 'templates/Game'
 import galleryMock from 'components/shared/Gallery/mock'
 import gamesMock from 'components/shared/GameCardSlider/mock'
 import highlightMock from 'components/shared/Highlight/mock'
+import { useRouter } from 'next/router'
 
 export default function Index(props: GameTemplateProps) {
   return <Game {...props} />
