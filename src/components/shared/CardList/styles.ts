@@ -18,6 +18,7 @@ export const Footer = styled.div`
     font-size: ${theme.font.sizes.small};
     padding: 2rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.medium};
