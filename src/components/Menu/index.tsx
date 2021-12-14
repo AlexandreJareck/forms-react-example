@@ -7,6 +7,9 @@ import Logo from 'components/shared/Logo'
 import MediaMatch from 'components/shared/MediaMatch'
 import Link from 'next/link'
 import { useState } from 'react'
+import CartDropdown from 'components/shared/CartDropdown'
+import CartIcon from 'components/shared/CartIcon'
+import UserDropdown from 'components/shared/UserDropdown'
 import {
   Container,
   CreateAccount,
@@ -43,7 +46,7 @@ const Menu = ({ username }: MenuProps) => {
           <Link href="/" passHref>
             <MenuLink>Home</MenuLink>
           </Link>
-          <Link href="/" passHref>
+          <Link href="/games" passHref>
             <MenuLink>Explore</MenuLink>
           </Link>
         </MenuNav>
@@ -54,15 +57,26 @@ const Menu = ({ username }: MenuProps) => {
           <SearchIcon aria-label="Search" />
         </IconWrapper>
         <IconWrapper>
-          <ShoppingCartIcon aria-label="Open Shopping Cart" />
-        </IconWrapper>
-        {!username && (
           <MediaMatch greaterThan="medium">
-            <Link href="/sign-in" passHref>
-              <Button as="a">Sign In</Button>
+            <CartDropdown />
+          </MediaMatch>
+          <MediaMatch lessThan="medium">
+            <Link href="/cart">
+              <a>
+                <CartIcon />
+              </a>
             </Link>
           </MediaMatch>
-        )}
+        </IconWrapper>
+        <MediaMatch greaterThan="medium">
+          {!username ? (
+            <Link href="/sign-in" passHref>
+              <Button as="a">Sign in</Button>
+            </Link>
+          ) : (
+            <UserDropdown username={username} />
+          )}
+        </MediaMatch>
       </MenuGroup>
 
       <MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
@@ -71,14 +85,18 @@ const Menu = ({ username }: MenuProps) => {
           <Link href="/" passHref>
             <MenuLink>Home</MenuLink>
           </Link>
-          <Link href="/" passHref>
+          <Link href="/games" passHref>
             <MenuLink>Explore</MenuLink>
           </Link>
 
           {!!username && (
             <>
-              <MenuLink href="">My account</MenuLink>
-              <MenuLink href="">Wishlist</MenuLink>
+              <Link href="/profile/me" passHref>
+                <MenuLink>My profile</MenuLink>
+              </Link>
+              <Link href="/profile/wishlist" passHref>
+                <MenuLink>Wishlist</MenuLink>
+              </Link>
             </>
           )}
         </MenuNav>
