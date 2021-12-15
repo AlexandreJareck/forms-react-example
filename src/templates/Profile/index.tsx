@@ -12,7 +12,6 @@ export type ProfileTemplateProps = {
 
 const Profile = ({ children }: ProfileTemplateProps) => {
   const router = useRouter()
-  console.log(router)
   return (
     <Base>
       <Container>

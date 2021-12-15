@@ -8,8 +8,6 @@ const HFCheckbox = ({ name = '', isChecked, ...rest }: CheckboxProps) => {
     formState: { errors }
   } = useFormContext()
 
-  console.log(errors)
-
   return (
     <Checkbox
       {...register(name)}
