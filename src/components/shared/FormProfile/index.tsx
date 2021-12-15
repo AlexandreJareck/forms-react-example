@@ -14,6 +14,7 @@ const FormProfile = () => {
       <Form>
         <TextField
           name="name"
+          type="text"
           placeholder="Name"
           label="Name"
           initialValue="John Doe"

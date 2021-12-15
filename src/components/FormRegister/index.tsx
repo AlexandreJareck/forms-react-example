@@ -10,6 +10,8 @@ import { Form } from 'components/hook-form/Form'
 import HFCheckbox from 'components/hook-form/HFCheckBox'
 import HFRadioField from 'components/hook-form/HFRadioField'
 import { useState } from 'react'
+import SelectField from 'components/shared/SelectField'
+import mockOptions from 'components/shared/SelectField/mock'
 
 type FormRegisterFields = {
   name: string
@@ -98,6 +100,14 @@ const FormRegister = () => {
           labelFor="Radio2"
           labelColor="black"
         />
+
+        <SelectField onChange={(e) => console.log(e.target.value)}>
+          {mockOptions.map((item) => (
+            <option key={item.value} value={item.value}>
+              {item.name}
+            </option>
+          ))}
+        </SelectField>
 
         <ForgotPassword href="#">Forgot your password?</ForgotPassword>
 

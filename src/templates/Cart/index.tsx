@@ -33,7 +33,7 @@ const Cart = ({
           My cart
         </Heading>
 
-        {items.length ? (
+        {items?.length ? (
           <Content>
             <CartList items={items} total={total} />
 

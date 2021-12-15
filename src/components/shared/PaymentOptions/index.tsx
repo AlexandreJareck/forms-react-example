@@ -45,7 +45,7 @@ const PaymentOptions = ({ cards, handlePayment }: PaymentOptionsProps) => {
                 name="credit-card"
                 id={card.number}
                 value={card.number}
-                onCheck={() => setChecked(true)}
+                onChange={() => setChecked(true)}
               />
             </CardItem>
           ))}
