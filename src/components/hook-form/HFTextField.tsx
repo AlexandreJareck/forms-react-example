@@ -8,12 +8,7 @@ const HFTextField = ({ name = '', onBlur, ...rest }: TextFieldProps) => {
   } = useFormContext()
 
   return (
-    <TextField
-      {...register(name)}
-      onBlur={onBlur}
-      error={errors[name]?.message}
-      {...rest}
-    />
+    <TextField {...register(name)} error={errors[name]?.message} {...rest} />
   )
 }
 

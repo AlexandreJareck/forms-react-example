@@ -7,10 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import schema from './schema'
 import HFTextField from 'components/hook-form/HFTextField'
 import { Form } from 'components/hook-form/Form'
-import { FocusEvent, FocusEventHandler, useState } from 'react'
 import HFCheckbox from 'components/hook-form/HFCheckBox'
-import Radio from 'components/shared/Radio'
 import HFRadioField from 'components/hook-form/HFRadioField'
+import { useState } from 'react'
 
 type FormRegisterFields = {
   name: string
@@ -22,8 +21,6 @@ type FormRegisterFields = {
 }
 
 const FormRegister = () => {
-  const [isChecked, setIsChecked] = useState(false)
-
   async function stall(stallTime = 3000) {
     await new Promise((resolve) => setTimeout(resolve, stallTime))
   }
@@ -39,13 +36,10 @@ const FormRegister = () => {
 
   const {
     watch,
-    register,
     formState: { isSubmitting }
   } = methods
 
-  const onBlur = (e: FocusEvent<HTMLInputElement>) => {
-    console.log(e.target.value)
-  }
+  const [isChecked, setIsChecked] = useState(false)
 
   return (
     <FormContainer>
@@ -54,7 +48,6 @@ const FormRegister = () => {
           name="name"
           placeholder="Name"
           type="text"
-          onBlur={(e) => onBlur(e)}
           icon={<AccountCircle />}
         />
         <HFTextField
@@ -77,13 +70,12 @@ const FormRegister = () => {
         />
         <HFCheckbox
           key="isCheck"
-          {...register('isCheck', {
-            onChange: () => setIsChecked(!isChecked)
-          })}
+          name="isCheck"
           label="isCheck"
           labelFor="isCheck"
           labelColor={'black'}
           isChecked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
         />
 
         <br />

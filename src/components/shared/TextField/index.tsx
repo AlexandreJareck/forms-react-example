@@ -1,4 +1,5 @@
 import {
+  FocusEvent,
   FocusEventHandler,
   forwardRef,
   ForwardRefRenderFunction,
@@ -10,6 +11,7 @@ export type TextFieldProps = {
   onInput?: (value: string) => void
   label?: string
   initialValue?: string
+  onBlur?: (e: FocusEvent<HTMLInputElement>) => void
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
   disabled?: boolean
