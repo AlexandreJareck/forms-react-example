@@ -7,9 +7,16 @@ const HFCheckbox = ({ name = '', isChecked, ...rest }: CheckboxProps) => {
     register,
     formState: { errors }
   } = useFormContext()
+
+  console.log(errors)
+
   return (
-    // <Checkbox {...register(name)} error={errors[name]?.message} {...rest} />
-    <Checkbox {...register(name)} isChecked={isChecked} {...rest} />
+    <Checkbox
+      {...register(name)}
+      isChecked={isChecked}
+      error={errors[name]?.message}
+      {...rest}
+    />
   )
 }
 

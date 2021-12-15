@@ -4,16 +4,25 @@ import {
   InputHTMLAttributes
 } from 'react'
 import { Container, Input, Label } from './styles'
+import { Error } from 'components/shared/Error'
 
 export type CheckboxProps = {
   isChecked?: boolean
   label?: string
   labelFor?: string
   labelColor?: 'white' | 'black'
+  error?: string | string[]
 } & InputHTMLAttributes<HTMLInputElement>
 
 const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (
-  { label, isChecked = false, labelFor = '', labelColor = 'white', ...props },
+  {
+    label,
+    isChecked = false,
+    labelFor = '',
+    labelColor = 'white',
+    error,
+    ...props
+  },
   ref
 ) => {
   return (
@@ -30,6 +39,7 @@ const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (
           {label}
         </Label>
       )}
+      {!!error && <Error>{error}</Error>}
     </Container>
   )
 }
