@@ -1,4 +1,5 @@
 import {
+  FocusEventHandler,
   forwardRef,
   ForwardRefRenderFunction,
   InputHTMLAttributes
@@ -27,6 +28,7 @@ const TextField: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = (
     iconPosition = 'left',
     disabled = false,
     type,
+    onBlur,
     ...props
   },
   ref
@@ -39,6 +41,7 @@ const TextField: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = (
         <Input
           type={type}
           ref={ref}
+          onBlur={onBlur}
           iconPosition={iconPosition}
           disabled={disabled}
           name={name}

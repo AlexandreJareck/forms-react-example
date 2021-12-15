@@ -7,9 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import schema from './schema'
 import HFTextField from 'components/hook-form/HFTextField'
 import { Form } from 'components/hook-form/Form'
-import { useState } from 'react'
+import { FocusEvent, FocusEventHandler, useState } from 'react'
 import HFCheckbox from 'components/hook-form/HFCheckBox'
-import Checkbox from 'components/shared/Checkbox'
 
 type FormRegisterFields = {
   name: string
@@ -35,9 +34,12 @@ const FormRegister = () => {
   })
   const {
     watch,
+    register,
     formState: { isSubmitting }
   } = methods
-
+  const onBlur = (e: FocusEvent<HTMLInputElement>) => {
+    console.log(e.target.value)
+  }
   return (
     <FormContainer>
       <Form methods={methods} onSubmit={onSubmit}>
@@ -45,6 +47,7 @@ const FormRegister = () => {
           name="name"
           placeholder="Name"
           type="text"
+          onBlur={(e) => onBlur(e)}
           icon={<AccountCircle />}
         />
         <HFTextField
