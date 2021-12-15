@@ -9,8 +9,9 @@ import HFTextField from 'components/hook-form/HFTextField'
 import { Form } from 'components/hook-form/Form'
 import { useState } from 'react'
 import HFCheckbox from 'components/hook-form/HFCheckBox'
+import Checkbox from 'components/shared/Checkbox'
 
-type FormSignUpFields = {
+type FormRegisterFields = {
   name: string
   email: string
   password: string
@@ -18,16 +19,18 @@ type FormSignUpFields = {
   teste: boolean
 }
 
-const FormSignUp = () => {
+const FormRegister = () => {
+  const [isChecked, setIsChecked] = useState(false)
+
   async function stall(stallTime = 3000) {
     await new Promise((resolve) => setTimeout(resolve, stallTime))
   }
 
-  async function onSubmit(data: FormSignUpFields) {
+  async function onSubmit(data: FormRegisterFields) {
     console.log(data)
     await stall()
   }
-  const methods = useForm<FormSignUpFields>({
+  const methods = useForm<FormRegisterFields>({
     resolver: yupResolver(schema)
   })
   const {
@@ -62,6 +65,14 @@ const FormSignUp = () => {
           type="password"
           icon={<Lock />}
         />
+        <HFCheckbox
+          key="teste"
+          name="teste"
+          label="teste"
+          labelFor="teste"
+          isChecked={isChecked}
+          onChange={() => setIsChecked(!isChecked)}
+        />
         <ForgotPassword href="#">Forgot your password?</ForgotPassword>
 
         <Button type="submit" size="large" fullWidth disabled={isSubmitting}>
@@ -79,4 +90,4 @@ const FormSignUp = () => {
   )
 }
 
-export default FormSignUp
+export default FormRegister

@@ -1,38 +1,28 @@
-import { InputHTMLAttributes, useState } from 'react'
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  InputHTMLAttributes
+} from 'react'
 import { Container, Input, Label } from './styles'
 
 export type CheckboxProps = {
   isChecked?: boolean
-  onCheck: (status: boolean) => void
   label?: string
   labelFor?: string
   labelColor?: 'white' | 'black'
-  value?: string | ReadonlyArray<string> | number | undefined
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Checkbox = ({
-  onCheck,
-  label,
-  isChecked = false,
-  labelFor = '',
-  labelColor = 'white',
-  value,
-  ...props
-}: CheckboxProps) => {
-  const [checked, setChecked] = useState(isChecked)
-  const onChange = () => {
-    setChecked(!checked)
-    !!onCheck && onCheck(!checked)
-  }
-
+const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (
+  { label, isChecked = false, labelFor = '', labelColor = 'white', ...props },
+  ref
+) => {
   return (
     <Container>
       <Input
+        ref={ref}
         id={labelFor}
         type="checkbox"
-        onChange={onChange}
-        checked={checked}
-        value={value}
+        checked={isChecked}
         {...props}
       />
       {!!label && (
@@ -44,4 +34,4 @@ const Checkbox = ({
   )
 }
 
-export default Checkbox
+export default forwardRef(Checkbox)
