@@ -13,6 +13,7 @@ export type TextFieldProps = {
   iconPosition?: 'left' | 'right'
   disabled?: boolean
   error?: string
+  type: 'text' | 'password' | 'email'
 } & InputHTMLAttributes<HTMLInputElement>
 
 const TextField: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = (
@@ -25,6 +26,7 @@ const TextField: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = (
     name,
     iconPosition = 'left',
     disabled = false,
+    type,
     ...props
   },
   ref
@@ -35,7 +37,7 @@ const TextField: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = (
       <InputWrapper>
         {!!icon && <Icon iconPosition={iconPosition}>{icon}</Icon>}
         <Input
-          type="text"
+          type={type}
           ref={ref}
           iconPosition={iconPosition}
           disabled={disabled}
