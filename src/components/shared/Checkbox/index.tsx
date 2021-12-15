@@ -8,6 +8,7 @@ import { Error } from 'components/shared/Error'
 
 export type CheckboxProps = {
   isChecked?: boolean
+  onCheck?: () => void
   label?: string
   labelFor?: string
   labelColor?: 'white' | 'black'
@@ -21,6 +22,7 @@ const Checkbox: ForwardRefRenderFunction<HTMLInputElement, CheckboxProps> = (
     labelFor = '',
     labelColor = 'white',
     error,
+    onCheck,
     ...props
   },
   ref

@@ -9,6 +9,8 @@ import HFTextField from 'components/hook-form/HFTextField'
 import { Form } from 'components/hook-form/Form'
 import { FocusEvent, FocusEventHandler, useState } from 'react'
 import HFCheckbox from 'components/hook-form/HFCheckBox'
+import Radio from 'components/shared/Radio'
+import HFRadioField from 'components/hook-form/HFRadioField'
 
 type FormRegisterFields = {
   name: string
@@ -16,6 +18,7 @@ type FormRegisterFields = {
   password: string
   confirmPassword: string
   isCheck: boolean
+  radio: string
 }
 
 const FormRegister = () => {
@@ -29,17 +32,21 @@ const FormRegister = () => {
     console.log(data)
     await stall()
   }
+
   const methods = useForm<FormRegisterFields>({
     resolver: yupResolver(schema)
   })
+
   const {
     watch,
     register,
     formState: { isSubmitting }
   } = methods
+
   const onBlur = (e: FocusEvent<HTMLInputElement>) => {
     console.log(e.target.value)
   }
+
   return (
     <FormContainer>
       <Form methods={methods} onSubmit={onSubmit}>
@@ -70,13 +77,36 @@ const FormRegister = () => {
         />
         <HFCheckbox
           key="isCheck"
-          name="isCheck"
+          {...register('isCheck', {
+            onChange: () => setIsChecked(!isChecked)
+          })}
           label="isCheck"
           labelFor="isCheck"
           labelColor={'black'}
           isChecked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
         />
+
+        <br />
+        <HFRadioField
+          key="Radio"
+          id="Radio"
+          value="Radio"
+          name="radio"
+          label="Radio"
+          labelFor="Radio"
+          labelColor="black"
+        />
+        <br />
+        <HFRadioField
+          key="Radio2"
+          id="Radio2"
+          value="Radio2"
+          name="radio"
+          label="Radio2"
+          labelFor="Radio2"
+          labelColor="black"
+        />
+
         <ForgotPassword href="#">Forgot your password?</ForgotPassword>
 
         <Button type="submit" size="large" fullWidth disabled={isSubmitting}>

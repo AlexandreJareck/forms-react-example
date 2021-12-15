@@ -2,7 +2,12 @@ import { useFormContext } from 'react-hook-form'
 
 import Checkbox, { CheckboxProps } from '../shared/Checkbox'
 
-const HFCheckbox = ({ name = '', isChecked, ...rest }: CheckboxProps) => {
+const HFCheckbox = ({
+  name = '',
+  isChecked,
+  onCheck,
+  ...rest
+}: CheckboxProps) => {
   const {
     register,
     formState: { errors }
@@ -12,6 +17,7 @@ const HFCheckbox = ({ name = '', isChecked, ...rest }: CheckboxProps) => {
     <Checkbox
       {...register(name)}
       isChecked={isChecked}
+      onCheck={onCheck}
       error={errors[name]?.message}
       {...rest}
     />

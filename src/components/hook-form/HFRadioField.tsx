@@ -7,8 +7,7 @@ const HFRadioField = ({ name = '', onBlur, ...rest }: RadioProps) => {
     formState: { errors }
   } = useFormContext()
 
-  // error={errors[name]?.message}
-  return <Radio {...register(name)} {...rest} />
+  return <Radio {...register(name)} error={errors[name]?.message} {...rest} />
 }
 
 export default HFRadioField

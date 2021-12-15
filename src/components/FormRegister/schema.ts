@@ -5,6 +5,7 @@ const requiredMessage = 'Campos Obrigatório!'
 const schema = yup.object().shape({
   email: yup.string().required(requiredMessage),
   name: yup.string().required(requiredMessage),
+  radio: yup.string().nullable().required(requiredMessage),
   isCheck: yup.boolean().oneOf([true], requiredMessage),
   password: yup.string().required(requiredMessage),
   confirmPassword: yup

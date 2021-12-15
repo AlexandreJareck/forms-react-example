@@ -1,4 +1,9 @@
-import { InputHTMLAttributes } from 'react'
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  InputHTMLAttributes
+} from 'react'
+import { Error } from '../Error'
 import { Container, Input, Label } from './styles'
 
 type RadioValue = string | ReadonlyArray<string> | number
@@ -8,25 +13,24 @@ export type RadioProps = {
   labelColor?: 'white' | 'black'
   labelFor?: string
   value?: RadioValue
+  error?: string | string[]
 } & InputHTMLAttributes<HTMLInputElement>
 
-const Radio = ({
-  label,
-  labelColor = 'white',
-  labelFor,
-  value,
-  ...props
-}: RadioProps) => {
+const Radio: ForwardRefRenderFunction<HTMLInputElement, RadioProps> = (
+  { label, labelColor = 'white', labelFor, value, error, ...props },
+  ref
+) => {
   return (
     <Container>
-      <Input id={labelFor} type="radio" value={value} {...props} />
+      <Input ref={ref} id={labelFor} type="radio" value={value} {...props} />
       {!!label && (
         <Label labelColor={labelColor} htmlFor={labelFor}>
           {label}
         </Label>
       )}
+      {!!error && <Error>{error}</Error>}
     </Container>
   )
 }
 
-export default Radio
+export default forwardRef(Radio)
