@@ -1,4 +1,8 @@
-import { useState, InputHTMLAttributes } from 'react'
+import {
+  forwardRef,
+  ForwardRefRenderFunction,
+  InputHTMLAttributes
+} from 'react'
 import { Container, Icon, Input, InputWrapper, Label, Error } from './styles'
 
 export type TextFieldProps = {
@@ -11,26 +15,20 @@ export type TextFieldProps = {
   error?: string
 } & InputHTMLAttributes<HTMLInputElement>
 
-const TextField = ({
-  label,
-  error,
-  initialValue = '',
-  onInput,
-  icon,
-  name,
-  iconPosition = 'left',
-  disabled = false,
-  ...props
-}: TextFieldProps) => {
-  const [value, setValue] = useState(initialValue)
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.currentTarget.value
-    setValue(newValue)
-
-    !!onInput && onInput(newValue)
-  }
-
+const TextField: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = (
+  {
+    label,
+    error,
+    initialValue = '',
+    onInput,
+    icon,
+    name,
+    iconPosition = 'left',
+    disabled = false,
+    ...props
+  },
+  ref
+) => {
   return (
     <Container disabled={disabled} error={!!error}>
       {!!label && <Label htmlFor={name}>{label}</Label>}
@@ -38,8 +36,7 @@ const TextField = ({
         {!!icon && <Icon iconPosition={iconPosition}>{icon}</Icon>}
         <Input
           type="text"
-          onChange={onChange}
-          value={value}
+          ref={ref}
           iconPosition={iconPosition}
           disabled={disabled}
           name={name}
@@ -52,4 +49,4 @@ const TextField = ({
   )
 }
 
-export default TextField
+export default forwardRef(TextField)
