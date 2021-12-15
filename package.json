@@ -14,15 +14,18 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.8.5",
     "@styled-icons/fa-brands": "^10.38.0",
     "next": "12.0.7",
     "next-pwa": "^5.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-hook-form": "^7.22.0",
     "react-slick": "^0.28.1",
     "styled-components": "^5.3.3",
     "styled-icons": "^10.45.0",
-    "styled-media-query": "^2.1.2"
+    "styled-media-query": "^2.1.2",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
