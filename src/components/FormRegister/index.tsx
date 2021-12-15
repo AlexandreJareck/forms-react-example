@@ -16,7 +16,7 @@ type FormRegisterFields = {
   email: string
   password: string
   confirmPassword: string
-  teste: boolean
+  isCheck: boolean
 }
 
 const FormRegister = () => {
@@ -66,10 +66,11 @@ const FormRegister = () => {
           icon={<Lock />}
         />
         <HFCheckbox
-          key="teste"
-          name="teste"
-          label="teste"
-          labelFor="teste"
+          key="isCheck"
+          name="isCheck"
+          label="isCheck"
+          labelFor="isCheck"
+          labelColor={'black'}
           isChecked={isChecked}
           onChange={() => setIsChecked(!isChecked)}
         />
