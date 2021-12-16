@@ -42,7 +42,7 @@ export function Form<T>({
 
   useEffect(() => {
     if (isFirstRender.current) return
-
+    console.log(isFirstRender)
     defaultValues &&
       Object.entries(defaultValues).map(([key, value]) =>
         methods.setValue(key as Path<T>, value)

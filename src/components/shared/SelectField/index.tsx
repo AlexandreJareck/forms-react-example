@@ -1,15 +1,31 @@
-import { ChangeEventHandler } from 'react'
+import { ChangeEventHandler, forwardRef, ForwardRefRenderFunction } from 'react'
+import { Error } from '../Error'
 import { Container, Select } from './styles'
 
-export type SelectFieldProps = {
-  children: React.ReactNode
-  onChange?: ChangeEventHandler<HTMLSelectElement>
+export type OptionsData = {
+  name: string
+  value: string | number
 }
 
-const SelectField = ({ children, onChange }: SelectFieldProps) => (
-  <Container>
-    <Select onChange={onChange}>{children}</Select>
-  </Container>
-)
+export type SelectFieldProps = {
+  children?: React.ReactNode
+  onChange?: ChangeEventHandler<HTMLSelectElement>
+  name?: string
+  error?: string
+  options?: OptionsData[]
+}
 
-export default SelectField
+const SelectField: ForwardRefRenderFunction<
+  HTMLSelectElement,
+  SelectFieldProps
+> = ({ children, onChange, name, error }, ref) => {
+  return (
+    <Container>
+      <Select ref={ref} name={name} onChange={onChange}>
+        {children}
+      </Select>
+      {!!error && <Error>{error}</Error>}
+    </Container>
+  )
+}
+export default forwardRef(SelectField)

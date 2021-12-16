@@ -5,13 +5,13 @@ import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import schema from './schema'
-import HFTextField from 'components/hook-form/HFTextField'
+
+import { selectFieldMock } from 'components/shared/SelectField/mock'
 import { Form } from 'components/hook-form/Form'
+import HFTextField from 'components/hook-form/HFTextField'
 import HFCheckbox from 'components/hook-form/HFCheckBox'
 import HFRadioField from 'components/hook-form/HFRadioField'
-import { useState } from 'react'
-import SelectField from 'components/shared/SelectField'
-import mockOptions from 'components/shared/SelectField/mock'
+import HFSelectField from 'components/hook-form/HFSelectField'
 
 type FormRegisterFields = {
   name: string
@@ -20,8 +20,8 @@ type FormRegisterFields = {
   confirmPassword: string
   isCheck: boolean
   radio: string
+  selectTeste: string
 }
-
 const FormRegister = () => {
   async function stall(stallTime = 3000) {
     await new Promise((resolve) => setTimeout(resolve, stallTime))
@@ -41,7 +41,7 @@ const FormRegister = () => {
     formState: { isSubmitting }
   } = methods
 
-  const [isChecked, setIsChecked] = useState(false)
+  const isChecked = watch('isCheck')
 
   return (
     <FormContainer>
@@ -75,9 +75,8 @@ const FormRegister = () => {
           name="isCheck"
           label="isCheck"
           labelFor="isCheck"
-          labelColor={'black'}
+          labelColor="black"
           isChecked={isChecked}
-          onChange={() => setIsChecked(!isChecked)}
         />
 
         <br />
@@ -101,13 +100,7 @@ const FormRegister = () => {
           labelColor="black"
         />
 
-        <SelectField onChange={(e) => console.log(e.target.value)}>
-          {mockOptions.map((item) => (
-            <option key={item.value} value={item.value}>
-              {item.name}
-            </option>
-          ))}
-        </SelectField>
+        <HFSelectField name="selectTeste" options={selectFieldMock} />
 
         <ForgotPassword href="#">Forgot your password?</ForgotPassword>
 
