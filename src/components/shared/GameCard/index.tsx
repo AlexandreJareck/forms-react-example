@@ -3,6 +3,7 @@ import {
   FavoriteBorder,
   Favorite
 } from '@styled-icons/material-outlined'
+import Link from 'next/link'
 import Button from '../Button'
 import Ribbon, { RibbonColors, RibbonSizes } from '../Ribbon'
 import {
@@ -19,6 +20,7 @@ import {
 } from './styles'
 
 export type GameCardProps = {
+  slug?: string
   title: string
   developer: string
   img: string
@@ -32,6 +34,7 @@ export type GameCardProps = {
 }
 
 const GameCard = ({
+  slug,
   title,
   developer,
   img,
@@ -42,35 +45,43 @@ const GameCard = ({
   ribbon,
   ribbonColor = 'primary',
   ribbonSize = 'small'
-}: GameCardProps) => (
-  <Container>
-    <ImageBox>
-      <Img src={img} alt={title} />
-    </ImageBox>
-    {!!ribbon && (
-      <Ribbon color={ribbonColor} size={ribbonSize}>
-        {ribbon}
-      </Ribbon>
-    )}
-    <Content>
-      <Info>
-        <Title>{title}</Title>
-        <Developer>{developer}</Developer>
-      </Info>
-      <FavButton onClick={onFav} role="button">
-        {favorite ? (
-          <Favorite aria-label="Remove from Wishlist" />
-        ) : (
-          <FavoriteBorder aria-label="Add to Wishlist" />
-        )}
-      </FavButton>
-      <BuyBox>
-        {!!promotionalPrice && <Price isPromotional>{price}</Price>}
-        <Price>{promotionalPrice || price}</Price>
-        <Button icon={<AddShoppingCart />} size="small" />
-      </BuyBox>
-    </Content>
-  </Container>
-)
+}: GameCardProps) => {
+  console.log(slug)
+  return (
+    <Container>
+      {!!ribbon && (
+        <Ribbon color={ribbonColor} size={ribbonSize}>
+          {ribbon}
+        </Ribbon>
+      )}
+      <Link href={`game/${slug}`} passHref>
+        <ImageBox>
+          <Img src={img} alt={title} />
+        </ImageBox>
+      </Link>
+
+      <Content>
+        <Link href={`game/${slug}`} passHref>
+          <Info>
+            <Title>{title}</Title>
+            <Developer>{developer}</Developer>
+          </Info>
+        </Link>
+        <FavButton onClick={onFav} role="button">
+          {favorite ? (
+            <Favorite aria-label="Remove from Wishlist" />
+          ) : (
+            <FavoriteBorder aria-label="Add to Wishlist" />
+          )}
+        </FavButton>
+        <BuyBox>
+          {!!promotionalPrice && <Price isPromotional>{price}</Price>}
+          <Price>{promotionalPrice || price}</Price>
+          <Button icon={<AddShoppingCart />} size="small" />
+        </BuyBox>
+      </Content>
+    </Container>
+  )
+}
 
 export default GameCard

@@ -4,6 +4,7 @@ export type Games = {
   developers: Developers[]
   cover: Cover
   price: number
+  slug: string
 }
 
 export type Developers = {
