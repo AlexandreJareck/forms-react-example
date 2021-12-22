@@ -47,7 +47,6 @@ const GameCard = ({
   ribbonColor = 'primary',
   ribbonSize = 'small'
 }: GameCardProps) => {
-  console.log(slug)
   return (
     <Container>
       {!!ribbon && (
