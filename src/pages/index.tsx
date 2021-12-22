@@ -14,13 +14,14 @@ export default function Index(props: HomeTemplateProps) {
 export async function getServerSideProps() {
   const apolloClient = initializeApollo()
 
-  const { data } = await apolloClient.query<HomeData>({ query: QUERY_HOME })
-  console.log(data.banners)
+  const {
+    data: { banners, newGames, upcomingGames, freeGames }
+  } = await apolloClient.query<HomeData>({ query: QUERY_HOME })
 
   return {
     props: {
       revalidate: 10,
-      banners: data.banners.map((banner) => ({
+      banners: banners.map((banner) => ({
         img: `http://localhost:1337${banner.image?.url}`,
         title: banner.title,
         subtitle: banner.subtitle,
@@ -32,13 +33,30 @@ export async function getServerSideProps() {
           ribbonSize: banner.ribbon.size
         })
       })),
-      newGames: gamesMock,
+      newGames: newGames.map((game) => ({
+        title: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price
+      })),
       mostPopularHighlight: highlightMock,
       mostPopularGames: gamesMock,
-      upcommingGames: gamesMock,
+      upcomingGames: upcomingGames.map((game) => ({
+        title: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price
+      })),
       upcommingHighligth: highlightMock,
-      upcommingMoreGames: gamesMock,
-      freeGames: gamesMock,
+      freeGames: freeGames.map((game) => ({
+        title: game.name,
+        slug: game.slug,
+        developer: game.developers[0].name,
+        img: `http://localhost:1337${game.cover?.url}`,
+        price: game.price
+      })),
       freeHighligth: highlightMock
     }
   }
