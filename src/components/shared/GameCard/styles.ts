@@ -120,3 +120,10 @@ export const Price = styled.div<PriceProps>`
     ${isPromotional && priceModifiers.promotional(theme)};
   `}
 `
+
+export const Img = styled.img`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+`

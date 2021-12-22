@@ -12,6 +12,7 @@ import {
   Developer,
   FavButton,
   ImageBox,
+  Img,
   Info,
   Price,
   Title
@@ -44,7 +45,7 @@ const GameCard = ({
 }: GameCardProps) => (
   <Container>
     <ImageBox>
-      <img src={img} alt={title} />
+      <Img src={img} alt={title} />
     </ImageBox>
     {!!ribbon && (
       <Ribbon color={ribbonColor} size={ribbonSize}>
