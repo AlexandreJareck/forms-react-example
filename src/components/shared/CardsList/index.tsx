@@ -6,19 +6,20 @@ export type CardsListProps = {
   cards?: PaymentCard[]
 }
 
-const CardsList = ({ cards }: CardsListProps) => (
-  <>
-    <Heading lineBottom color="black" size="small">
-      My cards
-    </Heading>
+const CardsList = ({ cards }: CardsListProps) => {
+  return (
+    <>
+      <Heading lineBottom color="black" size="small">
+        My cards
+      </Heading>
 
-    {cards?.map((card) => (
-      <Card key={card.number}>
-        <img src={card.img} alt={card.flag} />
-        <span>{card.number}</span>
-      </Card>
-    ))}
-  </>
-)
-
+      {cards?.map((card) => (
+        <Card key={card.number}>
+          <img src={card.img} alt={card.flag} />
+          <span>{card.number}</span>
+        </Card>
+      ))}
+    </>
+  )
+}
 export default CardsList

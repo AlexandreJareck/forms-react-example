@@ -8,7 +8,6 @@ import Base from 'templates/Base'
 import { Container } from 'components/shared/Container'
 import { Content } from './styles'
 import Heading from 'components/shared/Heading'
-import Empty from 'components/shared/Empty'
 import { Divider } from 'components/shared/Divider'
 import Showcase from 'components/shared/Showcase'
 
@@ -23,8 +22,6 @@ const Cart = ({
   recommendedTitle,
   recommendedGames,
   recommendedHighlight,
-  items,
-  total,
   cards
 }: CartProps) => {
   const handlePayment = () => ({})
@@ -34,20 +31,11 @@ const Cart = ({
         <Heading lineLeft lineColor="secondary">
           My cart
         </Heading>
+        <Content>
+          <CartList />
 
-        {items?.length ? (
-          <Content>
-            <CartList items={items} total={total} />
-
-            <PaymentOptions cards={cards} handlePayment={handlePayment} />
-          </Content>
-        ) : (
-          <Empty
-            title="Your cart is empty"
-            description="Go back to the store and explore great games and offers"
-            hasLink
-          />
-        )}
+          <PaymentOptions cards={cards} handlePayment={handlePayment} />
+        </Content>
 
         <Divider />
       </Container>

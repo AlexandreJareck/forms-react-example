@@ -14,7 +14,7 @@ type CartItems = {
 }
 
 export type CartContextData = {
-  items: CartItems[] | undefined
+  items: CartItems[]
   quantity: number
   total: string
   isInCart: (id: string) => boolean
@@ -46,7 +46,6 @@ const CartProvider = ({ children }: CartProviderProps) => {
 
   useEffect(() => {
     const data = getStorageItem(CART_KEY)
-
     if (data) {
       setCartItems(data)
     }
@@ -69,7 +68,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
 
   const saveCart = (cartItems: string[]) => {
     setCartItems(cartItems)
-    setStorageItem(CART_KEY, cartItems)
+    // setStorageItem(CART_KEY, cartItems)
   }
 
   const addToCart = (id: string) => {

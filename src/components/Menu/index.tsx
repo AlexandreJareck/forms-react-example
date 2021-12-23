@@ -1,15 +1,14 @@
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
-import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outlined/ShoppingCart'
 import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
 import Button from 'components/shared/Button'
-import Logo from 'components/shared/Logo'
-import MediaMatch from 'components/shared/MediaMatch'
-import Link from 'next/link'
-import { useState } from 'react'
 import CartDropdown from 'components/shared/CartDropdown'
 import CartIcon from 'components/shared/CartIcon'
+import Logo from 'components/shared/Logo'
+import MediaMatch from 'components/shared/MediaMatch'
 import UserDropdown from 'components/shared/UserDropdown'
+import Link from 'next/link'
+import { useState } from 'react'
 import {
   Container,
   CreateAccount,
