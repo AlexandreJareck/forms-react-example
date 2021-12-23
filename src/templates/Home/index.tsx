@@ -38,8 +38,6 @@ const Home = ({
   upcomingGamesTitle,
   freeGamesTitle
 }: HomeTemplateProps) => {
-  console.log(upcomingGames)
-
   return (
     <Base>
       <Container>
