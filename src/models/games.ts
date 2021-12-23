@@ -3,6 +3,7 @@ import { NameString, Url } from './util'
 
 export type GameQuery = {
   games: Games[]
+  gamesConnection: GamesConnection | null
 }
 
 export type Games = {
@@ -42,7 +43,18 @@ export type GamesSection = {
   developers: NameString[]
   price: number
 }
-export interface QueryGamesVariables {
+
+export type GamesConnectionValues = {
+  id: string
+}
+
+export type GamesConnection = {
+  values: (GamesConnectionValues | null)[] | null
+}
+
+export type QueryGamesVariables = {
   limit: number
   start?: number | null
+  where?: any | null
+  sort?: string | null
 }
