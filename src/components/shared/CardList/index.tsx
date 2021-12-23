@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Container, Footer, Total } from './styles'
 import Button from 'components/shared/Button'
 import Empty from '../Empty'
+import { useCart } from 'hooks/use-cart'
 
 export type CartListProps = {
   items?: GameItemProps[]
@@ -10,33 +11,36 @@ export type CartListProps = {
   hasButton?: boolean
 }
 
-const CardList = ({ items = [], total, hasButton = false }: CartListProps) => (
-  <Container isEmpty={!items.length}>
-    {items.length ? (
-      <>
-        {items.map((item) => (
-          <GameItem key={item.title} {...item} />
-        ))}
+const CardList = ({ hasButton = false }: CartListProps) => {
+  const { items, total } = useCart()
+  return (
+    <Container isEmpty={!items?.length}>
+      {items?.length ? (
+        <>
+          {items.map((item) => (
+            <GameItem key={item.title} {...item} />
+          ))}
 
-        <Footer>
-          {!hasButton && <span>Total:</span>}
-          <Total>{total}</Total>
+          <Footer>
+            {!hasButton && <span>Total:</span>}
+            <Total>{total}</Total>
 
-          {hasButton && (
-            <Link href="/cart">
-              <Button as="a">Buy it now</Button>
-            </Link>
-          )}
-        </Footer>
-      </>
-    ) : (
-      <Empty
-        title="Your cart is empty"
-        description="Go back to the store and explore great games and offers."
-        hasLink
-      />
-    )}
-  </Container>
-)
+            {hasButton && (
+              <Link href="/cart">
+                <Button as="a">Buy it now</Button>
+              </Link>
+            )}
+          </Footer>
+        </>
+      ) : (
+        <Empty
+          title="Your cart is empty"
+          description="Go back to the store and explore great games and offers."
+          hasLink
+        />
+      )}
+    </Container>
+  )
+}
 
 export default CardList

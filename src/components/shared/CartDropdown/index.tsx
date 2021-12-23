@@ -4,15 +4,10 @@ import Dropdown from 'components/shared/Dropdown'
 import { GameItemProps } from 'components/shared/GameItem'
 import { Container } from './styles'
 
-export type CartDropdownProps = {
-  items?: GameItemProps[]
-  total?: string
-}
-
-const CartDropdown = ({ items, total }: CartDropdownProps) => (
+const CartDropdown = () => (
   <Container>
     <Dropdown title={<CartIcon />}>
-      <CartList items={items} total={total} hasButton />
+      <CartList hasButton />
     </Dropdown>
   </Container>
 )

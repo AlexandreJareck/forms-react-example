@@ -10,6 +10,9 @@ export default {
     total: 'R$ 330,00'
   },
   argTypes: {
+    cartContextValue: {
+      type: ''
+    },
     items: {
       type: ''
     }
@@ -21,14 +24,24 @@ export default {
   }
 } as unknown as Meta
 
-export const Default: Story<CartListProps> = (args) => (
+export const Default: Story = (args) => (
   <div style={{ maxWidth: 800 }}>
     <CartList {...args} />
   </div>
 )
 
-export const WithButton: Story<CartListProps> = (args) => (
+Default.args = {
+  total: 'R$ 330,00',
+  cartContextValue: { mockItems }
+}
+
+export const WithButton: Story = (args) => (
   <div style={{ maxWidth: 800 }}>
     <CartList {...args} hasButton />
   </div>
 )
+
+WithButton.args = {
+  total: 'R$ 330,00',
+  cartContextValue: { mockItems }
+}
