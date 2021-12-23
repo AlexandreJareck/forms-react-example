@@ -37,6 +37,7 @@ export type Gallery = {
 }
 
 export type GamesSection = {
+  id: string
   name: string
   slug: string
   cover: Url | null
