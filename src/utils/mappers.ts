@@ -1,6 +1,7 @@
 import { BannerData } from 'models/banner'
-import { GamesSection } from 'models/games'
+import { Games, GamesSection } from 'models/games'
 import { Highlight } from 'models/Highlight'
+import formatPrice from './format-price'
 
 export const bannerMapper = (banners: BannerData[]) => {
   return banners.map((banner) => ({
@@ -43,4 +44,15 @@ export const highlightMapper = (highlight: Highlight | null | undefined) => {
       alignment: highlight.alignment
     }
   )
+}
+
+export const cartMapper = (games: Games[] | undefined) => {
+  return games
+    ? games.map((game) => ({
+        id: game.id,
+        img: `http://localhost:1337${game.cover?.url}`,
+        title: game.name,
+        price: formatPrice(game.price)
+      }))
+    : []
 }

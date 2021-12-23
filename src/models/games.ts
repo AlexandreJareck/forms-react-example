@@ -7,6 +7,7 @@ export type GameQuery = {
 }
 
 export type Games = {
+  id: string
   title: string
   name: string
   developers: NameString[]
@@ -54,7 +55,7 @@ export type GamesConnection = {
 }
 
 export type QueryGamesVariables = {
-  limit: number
+  limit?: number | null
   start?: number | null
   where?: any | null
   sort?: string | null
