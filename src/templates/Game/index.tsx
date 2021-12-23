@@ -40,37 +40,40 @@ const Game = ({
   recommendedGames,
   recommendedTitle,
   upcomingTitle
-}: GameTemplateProps) => (
-  <Base>
-    <Cover src={cover} role="image" aria-label="cover" />
+}: GameTemplateProps) => {
+  console.log(gameInfo)
+  return (
+    <Base>
+      <Cover src={cover} role="image" aria-label="cover" />
 
-    <Main>
-      <SectionGameInfo>
-        <GameInfo {...gameInfo} />
-      </SectionGameInfo>
+      <Main>
+        <SectionGameInfo>
+          <GameInfo {...gameInfo} />
+        </SectionGameInfo>
 
-      <SectionGallery>
-        {!!gallery && <Gallery items={gallery} />}
-      </SectionGallery>
+        <SectionGallery>
+          {!!gallery && <Gallery items={gallery} />}
+        </SectionGallery>
 
-      <SectionDescription>
-        <TextContent title="Description" content={description} />
-      </SectionDescription>
+        <SectionDescription>
+          <TextContent title="Description" content={description} />
+        </SectionDescription>
 
-      <SectionGameDetails>
-        <GameDetails {...details} />
-        <Divider />
-      </SectionGameDetails>
+        <SectionGameDetails>
+          <GameDetails {...details} />
+          <Divider />
+        </SectionGameDetails>
 
-      <Showcase
-        title={upcomingTitle}
-        games={upcomingGames}
-        highlight={upcomingHighlight}
-      />
+        <Showcase
+          title={upcomingTitle}
+          games={upcomingGames}
+          highlight={upcomingHighlight}
+        />
 
-      <Showcase title={recommendedTitle} games={recommendedGames} />
-    </Main>
-  </Base>
-)
+        <Showcase title={recommendedTitle} games={recommendedGames} />
+      </Main>
+    </Base>
+  )
+}
 
 export default Game

@@ -68,7 +68,7 @@ const CartProvider = ({ children }: CartProviderProps) => {
 
   const saveCart = (cartItems: string[]) => {
     setCartItems(cartItems)
-    // setStorageItem(CART_KEY, cartItems)
+    setStorageItem(CART_KEY, cartItems)
   }
 
   const addToCart = (id: string) => {

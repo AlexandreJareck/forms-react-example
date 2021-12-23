@@ -7,6 +7,7 @@ export type CardsListProps = {
 }
 
 const CardsList = ({ cards }: CardsListProps) => {
+  console.log(cards)
   return (
     <>
       <Heading lineBottom color="black" size="small">
