@@ -11,7 +11,7 @@ export type CartDropdownProps = {
 
 const CartDropdown = ({ items, total }: CartDropdownProps) => (
   <Container>
-    <Dropdown title={<CartIcon quantity={items?.length} />}>
+    <Dropdown title={<CartIcon />}>
       <CartList items={items} total={total} hasButton />
     </Dropdown>
   </Container>
