@@ -12,11 +12,15 @@ export type HomeTemplateProps = {
   newGames: GameCardProps[]
   mostPopularHighlight: HighlightProps
   mostPopularGames: GameCardProps[]
-  upcommingGames: GameCardProps[]
+  upcomingGames: GameCardProps[]
   upcommingHighligth: HighlightProps
   upcommingMoreGames: GameCardProps[]
   freeGames: GameCardProps[]
   freeHighligth: HighlightProps
+  newGamesTitle: string
+  mostPopularGamesTitle: string
+  upcomingGamesTitle: string
+  freeGamesTitle: string
 }
 
 const Home = ({
@@ -24,38 +28,50 @@ const Home = ({
   newGames,
   mostPopularHighlight,
   mostPopularGames,
-  upcommingGames,
+  upcomingGames,
   upcommingHighligth,
   upcommingMoreGames,
   freeGames,
-  freeHighligth
-}: HomeTemplateProps) => (
-  <Base>
-    <Container>
-      <SectionBanner>
-        <BannerSlider items={banners} />
-      </SectionBanner>
-    </Container>
+  freeHighligth,
+  newGamesTitle,
+  mostPopularGamesTitle,
+  upcomingGamesTitle,
+  freeGamesTitle
+}: HomeTemplateProps) => {
+  console.log(upcomingGames)
 
-    <SectionNews>
-      <Showcase title="News" games={newGames} color="black" />
-    </SectionNews>
+  return (
+    <Base>
+      <Container>
+        <SectionBanner>
+          <BannerSlider items={banners} />
+        </SectionBanner>
+      </Container>
 
-    <Showcase
-      title="Most Popular"
-      highlight={mostPopularHighlight}
-      games={mostPopularGames}
-    />
+      <SectionNews>
+        <Showcase title={newGamesTitle} games={newGames} color="black" />
+      </SectionNews>
 
-    <Container>
-      <SectionUpcoming>
-        <Showcase title="Upcoming" games={upcommingGames} />
-        <Showcase highlight={upcommingHighligth} games={upcommingMoreGames} />
-      </SectionUpcoming>
-    </Container>
+      <Showcase
+        title={mostPopularGamesTitle}
+        highlight={mostPopularHighlight}
+        games={mostPopularGames}
+      />
 
-    <Showcase title="Free games" highlight={freeHighligth} games={freeGames} />
-  </Base>
-)
+      <Container>
+        <SectionUpcoming>
+          <Showcase title={upcomingGamesTitle} games={upcomingGames} />
+          <Showcase highlight={upcommingHighligth} games={upcommingMoreGames} />
+        </SectionUpcoming>
+      </Container>
+
+      <Showcase
+        title={freeGamesTitle}
+        highlight={freeHighligth}
+        games={freeGames}
+      />
+    </Base>
+  )
+}
 
 export default Home

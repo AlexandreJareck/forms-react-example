@@ -39,12 +39,12 @@ export const Container = styled.section<ContainerProps>`
       position: absolute;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.6);A
     }
     ${media.greaterThan('medium')`
       height: 32rem;
     `}
-    ${wrapperModifiers[alignment!]()}
+    ${!!alignment && wrapperModifiers[alignment!]()}
   `}
 `
 export const Content = styled.div`

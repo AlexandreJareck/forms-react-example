@@ -1,27 +1,21 @@
+import { ENUM_GAME_RATING } from './enum'
+import { NameString, Url } from './util'
+
 export type Games = {
   title: string
   name: string
-  developers: Developers[]
-  cover: Cover
+  developers: NameString[]
+  cover: Url
   price: number
   slug: string
   short_description: string
   gallery: Gallery[]
   description: string
   release_date: any | null
-  platforms: Plataforms[]
-  publisher: Publisher
+  platforms: NameString[]
+  publisher: NameString
   rating: ENUM_GAME_RATING | null
-  categories: Categories[]
-}
-
-export type Developers = {
-  name: string
-}
-
-export type Cover = {
-  url: string
-  src?: string
+  categories: NameString[]
 }
 
 export type QueryGameBySlug = {
@@ -37,23 +31,10 @@ export type Gallery = {
   label: string | null
 }
 
-export type Plataforms = {
+export type GamesSection = {
   name: string
-}
-
-export type Publisher = {
-  name: string
-}
-
-export type Categories = {
-  name: string
-}
-
-export enum ENUM_GAME_RATING {
-  BR0 = 'BR0',
-  BR10 = 'BR10',
-  BR12 = 'BR12',
-  BR14 = 'BR14',
-  BR16 = 'BR16',
-  BR18 = 'BR18'
+  slug: string
+  cover: Url | null
+  developers: NameString[]
+  price: number
 }
