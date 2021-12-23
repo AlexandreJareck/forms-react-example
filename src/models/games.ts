@@ -1,6 +1,10 @@
 import { ENUM_GAME_RATING } from './enum'
 import { NameString, Url } from './util'
 
+export type GameQuery = {
+  games: Games[]
+}
+
 export type Games = {
   title: string
   name: string
@@ -37,4 +41,8 @@ export type GamesSection = {
   cover: Url | null
   developers: NameString[]
   price: number
+}
+export interface QueryGamesVariables {
+  limit: number
+  start?: number | null
 }
