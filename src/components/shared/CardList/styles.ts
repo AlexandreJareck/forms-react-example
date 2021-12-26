@@ -32,6 +32,22 @@ export const Container = styled.div<ContainerProps>`
     `}
   `}
 `
+
+export const Loading = styled.div`
+  ${({ theme }) => css`
+    background: ${theme.colors.white};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40rem;
+    min-width: 56rem;
+    svg {
+      height: 10rem;
+      width: 10rem;
+    }
+  `}
+`
+
 export const Footer = styled.div`
   ${({ theme }) => css`
     background: ${tint(0.2, theme.colors.lightGray)};
@@ -52,4 +68,9 @@ export const Total = styled.span`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
   `}
+`
+
+export const GamesList = styled.div`
+  max-height: 40rem;
+  overflow-y: auto;
 `

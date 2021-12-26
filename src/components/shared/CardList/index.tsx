@@ -1,9 +1,10 @@
 import GameItem, { GameItemProps } from 'components/shared/GameItem'
 import Link from 'next/link'
-import { Container, Footer, Total } from './styles'
+import { Container, Footer, GamesList, Loading, Total } from './styles'
 import Button from 'components/shared/Button'
 import Empty from '../Empty'
 import { useCart } from 'hooks/use-cart'
+import Loader from '../Loader'
 
 export type CartListProps = {
   items?: GameItemProps[]
@@ -12,15 +13,25 @@ export type CartListProps = {
 }
 
 const CardList = ({ hasButton = false }: CartListProps) => {
-  const { items, total } = useCart()
+  const { items, total, loading } = useCart()
+
+  if (loading) {
+    return (
+      <Loading>
+        <Loader />
+      </Loading>
+    )
+  }
 
   return (
     <Container isEmpty={!items.length}>
       {items?.length ? (
         <>
-          {items.map((item) => (
-            <GameItem key={item.title} {...item} />
-          ))}
+          <GamesList>
+            {items.map((item) => (
+              <GameItem key={item.title} {...item} />
+            ))}
+          </GamesList>
 
           <Footer>
             {!hasButton && <span>Total:</span>}
