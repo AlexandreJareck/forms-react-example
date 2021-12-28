@@ -3,14 +3,11 @@ import { tint } from 'polished'
 
 import * as ButtonStyles from 'components/shared/Button/styles'
 
-export const Container = styled.main`
-  ${({ theme }) => css`
-    background: ${theme.colors.white};
-  `}
-`
+export const Container = styled.div``
 
 export const Body = styled.div`
   ${({ theme }) => css`
+    background: ${theme.colors.white};
     padding: ${theme.spacings.small};
   `}
 `
