@@ -1,6 +1,5 @@
 import {
   FocusEvent,
-  FocusEventHandler,
   forwardRef,
   ForwardRefRenderFunction,
   InputHTMLAttributes
@@ -47,8 +46,8 @@ const TextField: ForwardRefRenderFunction<HTMLInputElement, TextFieldProps> = (
           iconPosition={iconPosition}
           disabled={disabled}
           name={name}
-          {...(label ? { id: name } : {})}
           {...props}
+          {...(label ? { id: name } : {})}
         />
       </InputWrapper>
       {!!error && <Error>{error}</Error>}

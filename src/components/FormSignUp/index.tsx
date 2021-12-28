@@ -1,33 +1,32 @@
+import { useMutation } from '@apollo/client'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { Form } from 'components/hook-form/Form'
+import HFTextField from 'components/hook-form/HFTextField'
 import Button from 'components/shared/Button'
 import { ForgotPassword, FormContainer, FormLink } from 'components/shared/Form'
+import { MUTATION_REGISTER } from 'graphql/mutations/register'
+import { UsersPermissionsRegisterInput } from 'models/userRegister'
 import Link from 'next/link'
-import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined'
 import { useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
+import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined'
 import schema from './schema'
-import HFTextField from 'components/hook-form/HFTextField'
-import { Form } from 'components/hook-form/Form'
-import { useState } from 'react'
-import HFCheckbox from 'components/hook-form/HFCheckBox'
-
-type FormSignUpFields = {
-  name: string
-  email: string
-  password: string
-  confirmPassword: string
-  teste: boolean
-}
 
 const FormSignUp = () => {
-  async function stall(stallTime = 3000) {
-    await new Promise((resolve) => setTimeout(resolve, stallTime))
-  }
+  const [createUser] = useMutation(MUTATION_REGISTER)
 
-  async function onSubmit(data: FormSignUpFields) {
-    console.log(data)
-    await stall()
+  async function handleSubmit(user: UsersPermissionsRegisterInput) {
+    console.log(user)
+    createUser({
+      variables: {
+        input: {
+          username: user.username,
+          email: user.email,
+          password: user.password
+        }
+      }
+    })
   }
-  const methods = useForm<FormSignUpFields>({
+  const methods = useForm<UsersPermissionsRegisterInput>({
     resolver: yupResolver(schema)
   })
   const {
@@ -37,9 +36,9 @@ const FormSignUp = () => {
 
   return (
     <FormContainer>
-      <Form methods={methods} onSubmit={onSubmit}>
+      <Form methods={methods} onSubmit={handleSubmit}>
         <HFTextField
-          name="name"
+          name="username"
           placeholder="Name"
           type="text"
           icon={<AccountCircle />}
@@ -53,12 +52,6 @@ const FormSignUp = () => {
         <HFTextField
           name="password"
           placeholder="Password"
-          type="password"
-          icon={<Lock />}
-        />
-        <HFTextField
-          name="confirmPassword"
-          placeholder="Confirm Password"
           type="password"
           icon={<Lock />}
         />
