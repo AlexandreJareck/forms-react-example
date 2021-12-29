@@ -1,14 +1,18 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import NextAuth, { NextAuthOptions } from 'next-auth'
-import { decode, encode } from 'next-auth/jwt'
-import CredentialsProvider from 'next-auth/providers/credentials'
+import Credentials from 'next-auth/providers/credentials'
+
+type AuthorizeProps = {
+  email: string
+  password: string
+}
 
 const options: NextAuthOptions = {
   pages: {
     signIn: '/sign-in'
   },
   providers: [
-    CredentialsProvider({
+    Credentials({
       name: 'Sign-in',
       credentials: {},
       async authorize({ email, password }: any) {
@@ -21,7 +25,7 @@ const options: NextAuthOptions = {
         )
 
         const data = await response.json()
-        console.log(data.jwt)
+        console.log(data)
         if (data.user) {
           return { ...data.user, jwt: data.jwt }
         } else {
@@ -30,28 +34,24 @@ const options: NextAuthOptions = {
       }
     })
   ],
-  session: {
-    strategy: 'jwt'
-  },
   callbacks: {
     async session({ session, user }) {
-      session.jwt = user.jwt
-      session.id = user.id
-      return Promise.resolve(session)
+      session.user = user
+
+      return session
     },
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id
         token.email = user.email
         token.name = user.name
-        token.jwt = user.jwt
       }
-      return Promise.resolve(token)
+      return token
     }
   }
 }
 
-const Auth = (req: NextApiRequest, res: NextApiResponse) =>
+const Auth = (req: NextApiRequest, res: NextApiResponse) => {
   NextAuth(req, res, options)
+}
 
 export default Auth

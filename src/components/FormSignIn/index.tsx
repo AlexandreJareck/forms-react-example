@@ -1,5 +1,10 @@
 import Button from 'components/shared/Button'
-import { ForgotPassword, FormContainer, FormLink } from 'components/shared/Form'
+import {
+  ForgotPassword,
+  FormContainer,
+  FormLink,
+  FormLoading
+} from 'components/shared/Form'
 import Link from 'next/link'
 import { signIn, SignInResponse } from 'next-auth/react'
 import { useRouter } from 'next/router'
@@ -7,6 +12,7 @@ import { Email, Lock } from 'styled-icons/material-outlined'
 import { useForm } from 'react-hook-form'
 import { Form } from 'components/hook-form/Form'
 import HFTextField from 'components/hook-form/HFTextField'
+import { useState } from 'react'
 
 type UserLogin = {
   email: string
@@ -15,8 +21,11 @@ type UserLogin = {
 
 const FormSignIn = () => {
   const { push } = useRouter()
+  const [loading, setLoading] = useState(false)
 
   async function handleSubmit(user: UserLogin) {
+    setLoading(true)
+
     const result = await signIn<any>('credentials', {
       ...user,
       redirect: false,
@@ -25,6 +34,8 @@ const FormSignIn = () => {
     if (result?.url) {
       return push(result?.url)
     }
+
+    setLoading(false)
 
     console.error('email ou senha inválida')
   }
@@ -53,8 +64,8 @@ const FormSignIn = () => {
         />
         <ForgotPassword href="#">Forgot your password?</ForgotPassword>
 
-        <Button size="large" fullWidth>
-          Sign in now
+        <Button type="submit" size="large" fullWidth disabled={loading}>
+          {loading ? <FormLoading /> : <span>Sign in now</span>}
         </Button>
 
         <FormLink>

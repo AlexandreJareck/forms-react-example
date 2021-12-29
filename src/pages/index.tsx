@@ -4,6 +4,7 @@ import { initializeApollo } from 'utils/apollo'
 import { QUERY_HOME } from 'graphql/queries/home'
 import { HomeData } from 'models/home'
 import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers'
+import { getSession } from 'next-auth/react'
 
 export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
@@ -11,6 +12,7 @@ export default function Index(props: HomeTemplateProps) {
 
 export async function getStaticProps() {
   const apolloClient = initializeApollo()
+
   const TODAY = new Date().toISOString().slice(0, 10)
 
   const {

@@ -3,6 +3,13 @@ import * as TextFieldStyles from 'components/shared/TextField/styles'
 import * as ButtonStyles from 'components/shared/Button/styles'
 import { lighten, darken } from 'polished'
 
+export const FormLoading = styled.img.attrs(() => ({
+  src: '/img/dots.svg',
+  alt: 'Waiting...'
+}))`
+  width: 4rem;
+`
+
 export const FormContainer = styled.div`
   ${({ theme }) => css`
     ${TextFieldStyles.Container} {

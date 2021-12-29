@@ -11,7 +11,6 @@ import { useApollo } from 'utils/apollo'
 
 function App({ Component, pageProps }: AppProps) {
   const client = useApollo(pageProps.initialApoloState)
-  console.log(pageProps)
   return (
     <SessionProvider session={pageProps.session}>
       <ApolloProvider client={client}>

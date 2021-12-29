@@ -4,6 +4,7 @@ import { Container } from 'components/shared/Container'
 import { GameCardProps } from 'components/shared/GameCard'
 import { HighlightProps } from 'components/shared/Highlight'
 import Showcase from 'components/shared/Showcase'
+import { useSession } from 'next-auth/react'
 import Base from 'templates/Base'
 import { SectionBanner, SectionNews, SectionUpcoming } from './styles'
 
