@@ -15,7 +15,6 @@ const FormSignUp = () => {
   const [createUser] = useMutation(MUTATION_REGISTER)
 
   async function handleSubmit(user: UsersPermissionsRegisterInput) {
-    console.log(user)
     createUser({
       variables: {
         input: {

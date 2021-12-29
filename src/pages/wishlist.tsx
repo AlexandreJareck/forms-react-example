@@ -17,8 +17,6 @@ export async function getStaticProps() {
     query: QUERY_RECOMMENDED
   })
 
-  console.log(data.recommended)
-
   return {
     props: {
       games: gamesMock,

@@ -41,7 +41,6 @@ const Game = ({
   recommendedTitle,
   upcomingTitle
 }: GameTemplateProps) => {
-  console.log(gameInfo)
   return (
     <Base>
       <Cover src={cover} role="image" aria-label="cover" />

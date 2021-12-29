@@ -15,7 +15,10 @@ export type FormHandles<T> = UseFormReturn<T>
 export type FormProps<T> = {
   children: ReactNode | ((methods: FormHandles<T>) => ReactNode)
 
-  onSubmit: (values: T, methods: FormHandles<T>) => Promise<void> | void
+  onSubmit: (
+    values: T,
+    methods: FormHandles<T>
+  ) => Promise<void> | void | Promise<boolean | undefined>
   defaultValues?: UnpackNestedValue<DeepPartial<T>>
 } & (
   | {
