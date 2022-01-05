@@ -1,3 +1,4 @@
+import { signOut } from 'next-auth/react'
 import Link from 'next/link'
 import {
   AccountCircle,
@@ -34,12 +35,10 @@ const ProfileMenu = ({ activeLink }: ProfileMenuProps) => (
       </LinkStyle>
     </Link>
 
-    <Link href="/logout" passHref>
-      <LinkStyle>
-        <ExitToApp size={24} />
-        <span>Sign out</span>
-      </LinkStyle>
-    </Link>
+    <LinkStyle role="button" onClick={() => signOut()}>
+      <ExitToApp size={24} />
+      <span>Sign out</span>
+    </LinkStyle>
   </Nav>
 )
 

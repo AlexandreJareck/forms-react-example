@@ -1,26 +1,31 @@
 import Footer from 'components/Footer'
 import Menu from 'components/Menu'
 import { Container as ContainerBase } from 'components/shared/Container'
+import { getToken } from 'next-auth/jwt'
+import { useSession } from 'next-auth/react'
 import { Container, Content, SectionFooter } from './styles'
 
 export type BaseTemplateProps = {
   children: React.ReactNode
 }
 
-const Base = ({ children }: BaseTemplateProps) => (
-  <Container>
-    <ContainerBase>
-      <Menu />
-    </ContainerBase>
+const Base = ({ children }: BaseTemplateProps) => {
+  const session = useSession()
 
-    <Content>{children}</Content>
-
-    <SectionFooter>
+  return (
+    <Container>
       <ContainerBase>
-        <Footer />
+        <Menu username={session?.data?.user?.name} />
       </ContainerBase>
-    </SectionFooter>
-  </Container>
-)
 
+      <Content>{children}</Content>
+
+      <SectionFooter>
+        <ContainerBase>
+          <Footer />
+        </ContainerBase>
+      </SectionFooter>
+    </Container>
+  )
+}
 export default Base

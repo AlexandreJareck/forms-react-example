@@ -3,7 +3,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Form } from 'components/hook-form/Form'
 import HFTextField from 'components/hook-form/HFTextField'
 import Button from 'components/shared/Button'
-import { ForgotPassword, FormContainer, FormLink } from 'components/shared/Form'
+import {
+  ForgotPassword,
+  FormContainer,
+  FormLink,
+  FormLoading
+} from 'components/shared/Form'
 import { MUTATION_REGISTER } from 'graphql/mutations/register'
 import { UsersPermissionsRegisterInput } from 'models/userRegister'
 import Link from 'next/link'
@@ -12,7 +17,7 @@ import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined'
 import schema from './schema'
 
 const FormSignUp = () => {
-  const [createUser] = useMutation(MUTATION_REGISTER)
+  const [createUser, { loading }] = useMutation(MUTATION_REGISTER)
 
   async function handleSubmit(user: UsersPermissionsRegisterInput) {
     createUser({
@@ -56,8 +61,8 @@ const FormSignUp = () => {
         />
         <ForgotPassword href="#">Forgot your password?</ForgotPassword>
 
-        <Button type="submit" size="large" fullWidth disabled={isSubmitting}>
-          Sign up now
+        <Button type="submit" size="large" fullWidth disabled={loading}>
+          {loading ? <FormLoading /> : <span>Sign up now</span>}
         </Button>
 
         <FormLink>

@@ -1,11 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import NextAuth, { NextAuthOptions } from 'next-auth'
+import NextAuth, { NextAuthOptions, User } from 'next-auth'
 import Credentials from 'next-auth/providers/credentials'
-
-type AuthorizeProps = {
-  email: string
-  password: string
-}
 
 const options: NextAuthOptions = {
   pages: {
@@ -25,7 +20,6 @@ const options: NextAuthOptions = {
         )
 
         const data = await response.json()
-        console.log(data)
         if (data.user) {
           return { ...data.user, jwt: data.jwt }
         } else {
@@ -36,14 +30,17 @@ const options: NextAuthOptions = {
   ],
   callbacks: {
     async session({ session, user }) {
-      session.user = user
+      if (user) {
+        session.user = user
+      }
 
       return session
     },
     async jwt({ token, user }) {
       if (user) {
         token.email = user.email
-        token.name = user.name
+        token.name = user.username as string
+        token.jwt = user.jwt
       }
       return token
     }
