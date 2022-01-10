@@ -16,9 +16,7 @@ function createApolloClient(session?: Session | null) {
   const httpLink = new HttpLink({
     uri: `${process.env.NEXT_PUBLIC_API_URL}/graphql`
   })
-
   const authLink = setContext((_, { headers }) => {
-    console.log(session?.jwt)
     const authorization = session?.jwt ? `Bearer ${session?.jwt}` : ''
     return { headers: { ...headers, authorization } }
   })

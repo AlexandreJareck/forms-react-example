@@ -6,6 +6,9 @@ const options: NextAuthOptions = {
   pages: {
     signIn: '/sign-in'
   },
+  jwt: {
+    secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw'
+  },
   providers: [
     Credentials({
       name: 'Sign-in',
@@ -29,9 +32,10 @@ const options: NextAuthOptions = {
     })
   ],
   callbacks: {
-    async session({ session, user }) {
+    async session({ session, user, token }) {
       if (user) {
         session.user = user
+        session.accessToken = token.jwt
       }
 
       return session
@@ -41,6 +45,7 @@ const options: NextAuthOptions = {
         token.email = user.email
         token.name = user.username as string
         token.jwt = user.jwt
+        token.accessToken = user.jwt
       }
       return token
     }

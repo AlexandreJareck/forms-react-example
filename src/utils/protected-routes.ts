@@ -5,7 +5,11 @@ import { getSession } from 'next-auth/react'
 async function protectedRoutes(context: GetServerSidePropsContext) {
   const session = await getSession(context)
   const req = context.req as NextApiRequest
-  if (session) session.jwt = req?.cookies['next-auth.session-token']
+  const token = await getToken({
+    req,
+    secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw'
+  })
+  if (session) session.jwt = token?.accessToken
   if (!session) {
     context.res.setHeader(
       'Location',
