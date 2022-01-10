@@ -2,9 +2,13 @@ import Heading from '../Heading'
 import TextField from '../TextField'
 import { Form } from './styles'
 import Button from 'components/shared/Button'
-import { useEffect } from 'react'
 
-const FormProfile = () => {
+export type FormProfileProps = {
+  username?: string
+  email?: string
+}
+
+const FormProfile = ({ email, username }: FormProfileProps) => {
   return (
     <>
       <Heading lineBottom color="black" size="small">
@@ -13,18 +17,18 @@ const FormProfile = () => {
 
       <Form>
         <TextField
-          name="name"
+          name="username"
           type="text"
-          placeholder="Name"
-          label="Name"
-          initialValue="John Doe"
+          placeholder="Username"
+          label="Username"
+          initialValue={username}
         />
 
         <TextField
           name="email"
           type="email"
           placeholder="E-mail"
-          initialValue="johndoe@gmail.com"
+          initialValue={email}
           label="E-mail"
           disabled
         />

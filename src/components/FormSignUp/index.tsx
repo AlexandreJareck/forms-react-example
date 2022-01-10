@@ -11,15 +11,25 @@ import {
 } from 'components/shared/Form'
 import { MUTATION_REGISTER } from 'graphql/mutations/register'
 import { UsersPermissionsRegisterInput } from 'models/userRegister'
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { AccountCircle, Email, Lock } from 'styled-icons/material-outlined'
 import schema from './schema'
 
 const FormSignUp = () => {
-  const [createUser, { loading }] = useMutation(MUTATION_REGISTER)
+  const [createUser, { error, loading }] = useMutation(MUTATION_REGISTER, {
+    onCompleted: () => {
+      signIn('credentials', {
+        email: getValues().email,
+        password: getValues().password,
+        callbackUrl: '/'
+      })
+    }
+  })
 
   async function handleSubmit(user: UsersPermissionsRegisterInput) {
+    console.log(user)
     createUser({
       variables: {
         input: {
@@ -35,6 +45,7 @@ const FormSignUp = () => {
   })
   const {
     watch,
+    getValues,
     formState: { isSubmitting }
   } = methods
 
@@ -56,6 +67,12 @@ const FormSignUp = () => {
         <HFTextField
           name="password"
           placeholder="Password"
+          type="password"
+          icon={<Lock />}
+        />
+        <HFTextField
+          name="confirm_password"
+          placeholder="Confirm password"
           type="password"
           icon={<Lock />}
         />

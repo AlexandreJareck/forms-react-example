@@ -1,3 +1,5 @@
+import { Form } from 'components/hook-form/Form'
+import HFTextField from 'components/hook-form/HFTextField'
 import Button from 'components/shared/Button'
 import {
   ForgotPassword,
@@ -5,14 +7,12 @@ import {
   FormLink,
   FormLoading
 } from 'components/shared/Form'
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import { signIn, SignInResponse } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import { Email, Lock } from 'styled-icons/material-outlined'
-import { useForm } from 'react-hook-form'
-import { Form } from 'components/hook-form/Form'
-import HFTextField from 'components/hook-form/HFTextField'
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { Email, Lock } from 'styled-icons/material-outlined'
 
 type UserLogin = {
   email: string
@@ -20,7 +20,8 @@ type UserLogin = {
 }
 
 const FormSignIn = () => {
-  const { push } = useRouter()
+  const routes = useRouter()
+  const { push, query } = routes
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit(user: UserLogin) {
@@ -29,7 +30,7 @@ const FormSignIn = () => {
     const result = await signIn<any>('credentials', {
       ...user,
       redirect: false,
-      callbackUrl: '/'
+      callbackUrl: `${window.location.origin}${query?.callbackUrl || ''}`
     })
     if (result?.url) {
       return push(result?.url)

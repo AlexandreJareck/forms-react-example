@@ -1,7 +1,6 @@
 import Footer from 'components/Footer'
 import Menu from 'components/Menu'
 import { Container as ContainerBase } from 'components/shared/Container'
-import { getToken } from 'next-auth/jwt'
 import { useSession } from 'next-auth/react'
 import { Container, Content, SectionFooter } from './styles'
 
@@ -10,12 +9,12 @@ export type BaseTemplateProps = {
 }
 
 const Base = ({ children }: BaseTemplateProps) => {
-  const session = useSession()
+  const { data: session, status } = useSession()
 
   return (
     <Container>
       <ContainerBase>
-        <Menu username={session?.data?.user?.name} />
+        <Menu username={session?.user?.name} loading={status === 'loading'} />
       </ContainerBase>
 
       <Content>{children}</Content>
