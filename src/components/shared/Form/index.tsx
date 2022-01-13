@@ -21,6 +21,17 @@ export const FormContainer = styled.div`
   `}
 `
 
+export const FormError = styled.div`
+  ${({ theme }) => css`
+    text-align: center;
+    color: red;
+    font-size: ${theme.font.sizes.small};
+    svg {
+      width: 1.6rem;
+    }
+  `}
+`
+
 export const ForgotPassword = styled.a`
   ${({ theme }) => css`
     display: block;

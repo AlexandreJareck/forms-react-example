@@ -63,7 +63,9 @@ const FormSignIn = () => {
           type="password"
           icon={<Lock />}
         />
-        <ForgotPassword href="#">Forgot your password?</ForgotPassword>
+        <Link href="/forgot-password" passHref>
+          <ForgotPassword>Forgot your password?</ForgotPassword>
+        </Link>
 
         <Button type="submit" size="large" fullWidth disabled={loading}>
           {loading ? <FormLoading /> : <span>Sign in now</span>}

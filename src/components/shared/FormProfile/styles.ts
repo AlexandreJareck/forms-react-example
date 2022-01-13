@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
 
-export const Form = styled.form`
+export const Form = styled.div`
   ${({ theme }) => css`
     max-width: 100%;
     display: grid;
