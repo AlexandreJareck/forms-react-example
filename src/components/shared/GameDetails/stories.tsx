@@ -10,7 +10,10 @@ export default {
     }
   },
   args: {
-    platforms: ['windows', 'linux', 'mac']
+    platforms: ['windows', 'linux', 'mac'],
+    rating: 'BR0',
+    genres: ['teste', 'teste1'],
+    releaseDate: '2020-02-05T16:30:41.392Z'
   }
 } as Meta
 

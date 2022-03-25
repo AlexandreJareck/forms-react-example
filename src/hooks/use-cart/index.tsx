@@ -65,7 +65,6 @@ const CartProvider = ({ children }: CartProviderProps) => {
   }, 0)
 
   const isInCart = (id: string) => (id ? cartItems.includes(id) : false)
-
   const saveCart = (cartItems: string[]) => {
     setCartItems(cartItems)
     setStorageItem(CART_KEY, cartItems)

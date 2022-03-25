@@ -1,7 +1,7 @@
 import TextField, { TextFieldProps } from 'components/shared/TextField'
 import { useFormContext } from 'react-hook-form'
 
-const HFTextField = ({ name = '', onBlur, ...rest }: TextFieldProps) => {
+const HFTextField = ({ name = '', ...rest }: TextFieldProps) => {
   const {
     register,
     formState: { errors }

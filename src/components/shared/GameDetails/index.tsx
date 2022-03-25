@@ -15,7 +15,7 @@ export type GameDetailsProps = {
 }
 
 const GameDetails = ({
-  rating,
+  rating = 'BR10',
   genres,
   publisher,
   releaseDate,
@@ -38,7 +38,7 @@ const GameDetails = ({
             day: 'numeric',
             month: 'short',
             year: 'numeric'
-          }).format(new Date(releaseDate))}
+          }).format(new Date('2020-02-05T16:30:41.392Z'))}
         />
         <GameDetailsBlock title="Platforms" withIcon platforms={platforms} />
         <GameDetailsBlock title="Publisher" description={publisher} />
